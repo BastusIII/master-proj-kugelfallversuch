@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle/boot/build/
+INSTALLNAME=beaglebone.build
+NAME=build
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:26:45-WEDT
+DESCRIPTION=Example build file for startup-beaglebone

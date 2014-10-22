@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/sbin/
+INSTALLNAME=devc-seromap
+NAME=devc-seromap
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:20:58-WEDT
+DESCRIPTION=Character device driver for the OMAP 1510/5910 UART

@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/bin/
+INSTALLNAME=dev-gpio-beaglebone
+NAME=dev-gpio-beaglebone
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:22:44-WEDT
+DESCRIPTION=Driver for the Beaglebone LEDs.

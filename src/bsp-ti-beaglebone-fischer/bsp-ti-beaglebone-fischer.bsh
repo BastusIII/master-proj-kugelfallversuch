@@ -1,0 +1,159 @@
+# Initialise the console
+procmgr_symlink ../../proc/boot/libc.so.3 /usr/lib/ldqnx.so.2
+
+display_msg Welcome to QNX Neutrino 6.5.0 SP1 on the Texas Instruments BeagleBone (ARMv7 Cortex-A8 core) - Board
+
+# Start some common servers
+slogger
+pipe
+
+#######################################################################
+## SERIAL driver
+#######################################################################
+devc-seromap -e -F -b115200 -c48000000/16 0x44E09000^2,72
+waitfor /dev/ser1 4
+reopen /dev/ser1
+
+#######################################################################
+## MMC/SD driver
+#######################################################################
+display_msg Starting MMC/SD driver...
+# MMC 0 pio
+#devb-mmcsd-jacinto5 cam blk automount=hd0t12:/fs/sd0 mmcsd verbose=5,pio,ioport=0x48060100,irq=64,ioport=0x49000000,dma=24,dma=25
+# MMC 0 dma
+devb-mmcsd-jacinto5 cam blk automount=hd0t12:/fs/sd0 mmcsd verbose=5,ioport=0x48060100,irq=64,ioport=0x49000000,dma=24,dma=25
+
+#######################################################################
+## I2C driver
+#######################################################################
+display_msg starting I2C driver...
+# Uncomment for /dev/i2c0
+i2c-omap35xx-j5 -i 70 -p0x44E0B000 --u0
+waitfor /dev/i2c0
+# Uncomment for /dev/i2c1
+i2c-omap35xx-j5 -i 71 -p0x4802A000 --u1
+waitfor /dev/i2c1
+# Uncomment for /dev/i2c2
+i2c-omap35xx-j5 -i 30 -p0x4819C000 --u2
+waitfor /dev/i2c2
+
+#######################################################################
+## Watchdog timer
+#  -k    Kick time interval in milliseconds. (Default: 15000 ms)
+#  -t    Timeout Period of watchdog timer in milliseconds. (Default: 2x the kicktime)
+#######################################################################
+display_msg starting WDT reset utility...
+wdtkick
+
+#######################################################################
+## Board id driver
+#######################################################################
+display_msg starting Board ID driver...
+## Uncomment for board id
+bdid-am335x
+
+#######################################################################
+## RTC driver (TPS65910) utility
+##  - It requires I2C driver
+#######################################################################
+display_msg Setting OS Clock from on-board RTC
+rtc am335xrtc
+
+#######################################################################
+## USB OTG Host Controller driver
+## -
+#######################################################################
+display_msg Starting USB OTG Host driver...
+io-usb -vvv -d dm816x-mg ioport=0x47401c00,irq=19
+waitfor /dev/io-usb/io-usb 10
+devb-umass cam pnp
+
+#######################################################################
+## SPI driver
+## SPI 0 ioport 0x48030100 irq 65
+## SPI 1 ioport 0x481a0100 irq 125
+#######################################################################
+display_msg Starting SPI driver...
+#  SPI0
+#spi-master -d am335x base=0x48030100,irq=65,edma=1,edmairq=529,edmachannel=17
+#  SPI1
+spi-master -d am335x base=0x481A0100,irq=125,edma=1,edmairq=555,edmachannel=43
+
+#######################################################################
+## Network driver
+#######################################################################
+display_msg Starting network driver...
+
+sleep 1
+io-pkt-v4-hc -v -dasix verbose,wait=5
+waitfor /dev/socket
+if_up -p -a en0
+ifconfig en0 192.168.2.2
+dhcp.client -i en0
+
+#######################################################################
+## EtherCAT driver
+#######################################################################
+display_msg Starting EtherCAT network driver...
+
+sleep 5
+
+on -p 180 /proc/boot/io-pkt-v4-hc -v -i1 -ptcpip prefix=/ecat1 -d am335x deviceindex=0,speed=100,duplex=1,promiscuous,verbose=10
+SOCK=/ecat1 waitfor /dev/socket 
+SOCK=/ecat1 ifconfig dm0 up 
+
+#######################################################################
+## Network driver (OLD configuration not compatible to ethercat!!!)
+#######################################################################
+#display_msg Starting network driver...
+#sleep 2
+##io-pkt-v4-hc -d am335x deviceindex=0 -d asix -v
+#if_up -p -a dm0
+#if_up -p -a en0
+##ifconfig dm0
+#ifconfig en0 10.0.0.1/24
+##io-pkt-v4-hc -dasix deviceindex=1
+##waitfor /dev/socket
+##if_up -p -a dm1
+##ifconfig dm0 10.150.224.93/16
+### or
+##display_msg Getting network address with DHCP...
+##dhcp.client -i dm0
+##if_up -r 15 dm0
+##ifconfig dm0
+##ifconfig dm1 192.168.11.2
+
+#######################################################################
+## REMOTE_DEBUG (gdb or Momentics)
+##  - refer to the help documentation for the gdb, qconn and the IDE
+##    for more information on remote debugging
+##  - the commands shown require that NETWORK is enabled too
+#######################################################################
+devc-pty
+waitfor /dev/ptyp0 4
+waitfor /dev/socket 4
+qconn port=8000
+
+#######################################################################
+## Leds driver
+#######################################################################
+display_msg starting leds driver...
+dev-leds-beaglebone &
+waitfor /dev/leds 4
+
+#######################################################################
+## INETD daemon
+#######################################################################
+display_msg Starting inetd daemon
+inetd
+
+#######################################################################
+## These env variables are inherited by all the programs which follow
+#######################################################################
+SYSNAME=nto
+TERM=qansi
+HOME=/
+PATH=:/proc/boot:/bin:/usr/bin:/usr/sbin:/opt/bin:/usr/photon/bin
+LD_LIBRARY_PATH=:/proc/boot:/lib:/usr/lib:/lib/dll:/opt/lib
+
+[+session] sh &

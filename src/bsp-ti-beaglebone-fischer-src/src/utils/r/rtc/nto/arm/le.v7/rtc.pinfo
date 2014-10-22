@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/sbin/
+INSTALLNAME=rtc
+NAME=rtc
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:27:04-WEDT
+DESCRIPTION=Set or get date from realtime clock

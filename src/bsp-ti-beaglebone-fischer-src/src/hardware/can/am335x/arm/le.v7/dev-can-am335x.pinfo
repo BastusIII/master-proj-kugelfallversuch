@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/bin/
+INSTALLNAME=dev-can-am335x
+NAME=dev-can-am335x
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/22-10:18:19-WEDT
+DESCRIPTION=Driver for the AM3517 HECC Interface.

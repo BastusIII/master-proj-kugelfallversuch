@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle/usr/lib/
+INSTALLNAME=libinput.a
+NAME=libinput.a
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:21:49-WEDT
+DESCRIPTION=Input DDK common library

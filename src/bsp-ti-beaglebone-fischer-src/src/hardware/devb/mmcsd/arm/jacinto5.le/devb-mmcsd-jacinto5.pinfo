@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle/sbin/
+INSTALLNAME=devb-mmcsd-jacinto5
+NAME=devb-mmcsd-jacinto5
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/22-10:18:23-WEDT
+DESCRIPTION=mmc/sd disk driver

@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/lib/dll/
+INSTALLNAME=spi-am335x.so
+NAME=spi-am335x.so
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:23:17-WEDT
+DESCRIPTION=DM816x SPI driver

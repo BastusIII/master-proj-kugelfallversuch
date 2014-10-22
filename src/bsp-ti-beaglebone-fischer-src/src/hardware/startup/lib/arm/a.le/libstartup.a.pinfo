@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle/usr/lib/
+INSTALLNAME=libstartup.a
+NAME=libstartup.a
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:24:22-WEDT
+DESCRIPTION=startup library

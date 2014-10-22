@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/lib/dll/
+INSTALLNAME=deva-ctrl-mcasp-j5_aic3106.so
+NAME=deva-ctrl-mcasp-j5_aic3106.so
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:20:28-WEDT
+DESCRIPTION=Driver for the TI JAMR

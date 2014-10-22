@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle/sbin/
+INSTALLNAME=bdid-am335x
+NAME=bdid-am335x
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/22-10:18:13-WEDT
+DESCRIPTION=AM335X BoardId Driver

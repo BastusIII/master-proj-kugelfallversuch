@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/boot/sys/
+INSTALLNAME=startup-beaglebone
+NAME=startup-beaglebone
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/22-10:20:50-WEDT
+DESCRIPTION=TI BeagleBone AM335x Cortex-A8 startup

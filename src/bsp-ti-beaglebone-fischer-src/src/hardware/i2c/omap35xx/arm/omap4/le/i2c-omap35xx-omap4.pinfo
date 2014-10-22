@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle/sbin/
+INSTALLNAME=i2c-omap35xx-omap4
+NAME=i2c-omap35xx-omap4
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/22-10:19:33-WEDT
+DESCRIPTION=OMAP35xx I2C Driver

@@ -1,3 +1,4 @@
 .cproject
 .project
 .qnx_internal.mk
+.sysbldr_meta

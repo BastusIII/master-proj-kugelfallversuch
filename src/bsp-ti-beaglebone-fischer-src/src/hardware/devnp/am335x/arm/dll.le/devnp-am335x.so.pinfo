@@ -1,0 +1,8 @@
+STATE=Experimental
+INSTALLDIR=armle/lib/dll/
+INSTALLNAME=devnp-am335x.so
+NAME=devnp-am335x.so
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/20-14:22:33-WEDT
+DESCRIPTION=am335x ethernet driver

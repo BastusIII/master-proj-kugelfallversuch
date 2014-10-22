@@ -1,0 +1,9 @@
+STATE=Experimental
+INSTALLDIR=armle-v7/lib/
+INSTALLNAME=libdma-am335x.so.1
+NAME=libdma-am335x.so
+USER=Administrator
+HOST=Dsche-Mobile
+DATE=2014/10/22-10:18:09-WEDT
+SYMLINK=libdma-am335x.so
+DESCRIPTION=DMA engine driver
