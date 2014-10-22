@@ -1,0 +1,11 @@
+usage: EtherCAT_PIDemo [-c loops] [-t cycletime_in_microsecs] [-p] [-w] <xmlfile>\n"
+          -c  : number of process image update loops (default 100000)
+          -t  : cycletime in microsecs. !!!WATCH OUT!!! Changes the system clock!!!
+          -p  : print process image
+          -w  : print working counters every 2s
+
+
+    	  To start an application using the EtherCAT Master Stack, two environment variables need to be set:
+          SOCK /ecat1 (the prefix you used to set up your EtherCAT device, see HOWTO.SetupEtherCATNetwork)
+          ECAT_DEV fxp0 (or whatever your EtherCAT device is)
+    

@@ -1,0 +1,17 @@
+#!/bin/sh
+# In case somebody modified the QNX project, 
+# copy the updated project info from . to qnx in order not to overwrite the changes
+cp ../.project .
+cp ../.cproject .
+cp ../.qnx_internal.mk .
+cp ../common.mk.qnx .
+
+# now copy the project info (as kept in SVN) back to .
+cp .project ..
+cp .cproject ..
+cp .qnx_internal.mk ..
+cp common.mk.qnx ../common.mk
+cp Makefile.qnx ../Makefile
+cp -r x86 ..
+cp -r arm ..
+
